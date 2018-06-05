@@ -1,6 +1,6 @@
 "use strict";
 
-const getHashTags = require("./hashtag");
+const getTags = require("./getTags");
 const Message = require("./message");
 
 const LOG_ID = "TAGS - ";
@@ -46,7 +46,7 @@ class Tags {
     }
 
     qualify(msg) {
-        let tags = getHashTags(msg.value);
+        let tags = getTags(msg.value);
         let foundOrEmpty = false;
 
         while(!foundOrEmpty) {

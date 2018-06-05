@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/ -w",
-    "coverage": "nyc --reporter=text mocha",
-    "build": "grunt sdk"
+    "coverage": "nyc --reporter=text mocha"
   },
   "author": "AL-Enterprise <support@openrainbow.com>",
   "license": "MIT",
@@ -14,7 +13,7 @@
     "circular-json": "^0.5.4",
     "cuid": "^2.1.0",
     "moment": "^2.20.1",
-    "rainbow-node-sdk": "^1.40.1",
+    "rainbow-node-sdk": "^1.41.4",
     "winston": "^2.4.0"
   },
   "devDependencies": {
