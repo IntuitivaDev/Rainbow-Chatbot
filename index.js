@@ -16,7 +16,7 @@ const LOG_ID = "CHATBOT - ";
 
 class RainbowAgent {
 
-    constructor(nodeSDK, tags) {
+    constructor(nodeSDK, tags, options) {
 
         process.on("uncaughtException", (err) => {
             console.error(err);
@@ -49,6 +49,11 @@ class RainbowAgent {
         this._contextTicket = null;
 
         this._isEnabled = true;
+
+        const defaultOptions = {
+            defaultScenario: null,
+        };
+        this.options = options || defaultOptions;
 
         return this;
     }
@@ -149,7 +154,16 @@ class RainbowAgent {
                 // Get work if exists
                 work = that.works.getWork(msg, scenario);
 
-                // Add to queue if work 
+                if(!work && !scenario && this.options.defaultScenario){
+                    msg.value = msg.value + " " + this.options.defaultScenario;
+                    scenario = that.tags.qualify(msg);
+                    if(!scenario){
+                        that.logger.log("warn", LOG_ID + "onmessagereceived() - Incorrect default scenario configured "+this.options.defaultScenario);
+                        return;
+                    }
+                    // Get work if exists
+                    work = that.works.getWork(msg, scenario);
+                }
                 if(!work) {
                     that.logger.log("warn", LOG_ID + "onmessagereceived() - Incorrect message received");
                     return;
