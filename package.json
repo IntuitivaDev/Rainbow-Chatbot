@@ -1,8 +1,9 @@
 {
-  "name": "rainbow-chatbot",
-  "version": "1.40.0",
+  "name": "rainboard-chatbot",
+  "version": "1.0.1",
   "description": "Rainbow ChatBot library for the Rainbow SDK for Node.JS",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "mocha test/ -w",
     "coverage": "nyc --reporter=text mocha"
